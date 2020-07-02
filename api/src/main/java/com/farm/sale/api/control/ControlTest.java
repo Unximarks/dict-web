@@ -1,5 +1,7 @@
-package com.dict.mark.control;
+package com.farm.sale.api.control;
 
+
+import bean.Good;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControlTest {
     @RequestMapping
     public String test(){
-        return "test   22";
+        Good good = new Good();
+        good.setId("1");
+        return "test "+good.getId();
     }
 
 }
