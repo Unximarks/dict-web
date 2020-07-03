@@ -1,7 +1,7 @@
 package com.farm.sale.dao.api;
 
 
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * 代理人Dao层
  * Created by mazq on 2020-04-22
  */
-@Repository
+@Mapper
 public interface AgencyDao {
 	List<String> selectId();
 }
