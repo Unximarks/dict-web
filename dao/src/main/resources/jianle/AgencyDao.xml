@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.farm.sale.dao.api.AgencyDao">
+	<resultMap id="AgencyModelResult" type="com.farm.sale.model.api.AgencyModel">
+		<id property="id" column="FID"/>
+		<result property="mobileGardenId" column="FMOBILE_GARDEN_ID"/>
+		<result property="personId" column="FPERSON_ID"/>
+		<result property="sort" column="FSORT"/>
+		<result property="createTime" column="FCREATE_TIME"/>
+		<result property="headUrl" column="HEAD_URL"/>
+	</resultMap>
+
+	<select id="selectByMobileId" parameterType="string" resultMap="AgencyModelResult">
+		select *
+		from   T_NEWGARDEN_AGENCY_PERSON
+		where FMOBILE_GARDEN_ID=#{mobileGardenId}
+		order by fsort
+	</select>
+
+	<insert id="insertAgency" parameterType="com.farm.sale.model.api.AgencyModel">
+		insert into   T_NEWGARDEN_AGENCY_PERSON(FID,FMOBILE_GARDEN_ID,FPERSON_ID,FSORT,FCREATE_TIME,HEAD_URL)
+			 values(#{id},#{mobileGardenId,jdbcType=VARCHAR},#{personId,jdbcType=VARCHAR},#{sort,jdbcType=VARCHAR},sysdate,#{headUrl,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateAgency" parameterType="com.farm.sale.model.api.AgencyModel">
+		update   T_NEWGARDEN_AGENCY_PERSON
+		<set>
+			FUPDATE_TIME=sysdate,
+			FUPDATE_OPERATOR_ID=#{operatorId},
+			<if test="mobileGardenId!=null">FMOBILE_GARDEN_ID=#{mobileGardenId},</if>
+			<if test="personId!=null">FPERSON_ID=#{personId},</if>
+			<if test="sort!=null">FSORT=#{sort},</if>
+		</set>
+		where FID=#{id}
+	</update>
+
+	<delete id="deleteAgency" parameterType="string">
+		delete from   T_NEWGARDEN_AGENCY_PERSON
+		where FMOBILE_GARDEN_ID=#{mobileGardenId}
+	</delete>
+	<select id="selectId">
+		select fid  from  T_NEWGARDEN_AGENCY_PERSON
+	</select>
+</mapper>
