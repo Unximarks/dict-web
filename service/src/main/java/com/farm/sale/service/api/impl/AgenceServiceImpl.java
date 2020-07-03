@@ -1,3 +1,4 @@
+/*
 package com.farm.sale.service.api.impl;
 
 import com.farm.sale.dao.api.AgencyDao;
@@ -17,3 +18,4 @@ public class AgenceServiceImpl implements AgenceService {
         return agencyDao.selectId();
     }
 }
+*/

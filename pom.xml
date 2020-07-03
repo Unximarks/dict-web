@@ -23,6 +23,31 @@
         <module>service</module>
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>api</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>service</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>model</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>dao</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <properties>
         <java.version>1.8</java.version>
