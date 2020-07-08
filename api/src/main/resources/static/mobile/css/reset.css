@@ -1,0 +1,47 @@
+@charset "utf-8";
+body, h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, th, td, pre, blockquote, fieldset, lengend, input, button, textarea, form{margin: 0; padding: 0;}
+body, input, button, textarea, select{font-size:14px; font-family: "Microsoft YaHei", Helvetica, Tahoma, Arial, sans-serif;}
+
+h1, h2, h3, em, i, th, caption, cite, code, address{font-style: normal; font-weight: normal;}
+ul, ol{list-style: none;}
+img, fieldset{border: 0 none;}
+img{ vertical-align: middle;}
+/*input, textarea{ outline: none;}*/
+table{ border-collapse: collapse; border-spacing: 0;}
+button, input, select, label{vertical-align:middle;}
+textarea,select{-webkit-appearance: none; -moz-appearance: none; -o-appearance: none; appearance: none; background:none;  outline:none;border:0px;}
+input{background:none;  outline:none;border:0px;}
+input[type="submit"], input[type="reset"], input[type="button"], button { -webkit-appearance: none;}/*清除iOS下的默认属性*/
+a{color: #333; outline: none; text-decoration: none;}
+a:focus{outline: none;}
+a:hover{text-decoration: none;}
+a:active{star:expression(this.onfocus=this.blur());}
+
+/*HTML5新标签兼容*/
+header, hgroup, nav, menu, main, section, article, summary, details, aside, figure, figcaption, footer{display: block;}
+/*清除浮动--推荐使用*/  
+.clearfix:before,.clearfix:after{content:"";display:table;} 
+.clearfix:after{height: 0;visibility: hidden;display: block;clear: both;} 
+.clearfix{*zoom:1;/*IE/7/6*/}
+/*公共样式*/
+.fl-r{float: right;}.fl-l{float: left;}
+/*.wrapper{width: 1260px; margin: 0 auto; overflow: hidden;}*/
+.container{	width: 92%;margin: 0 auto;overflow: hidden;}
+.text-ell{overflow:hidden; white-space:nowrap; text-overflow:ellipsis; letter-spacing:1px;}/*限制文文本加宽度*/
+
+/*--线条，处理手机上显示比较细的线条--*/
+.line{
+    -webkit-border-image: url(../img/line-white.png) 2 2 2 2;
+    -o-border-image: url(../img/line-white.png) 2 2 2 2;
+    border-image: url(../img/line-white.png) 2 2 2 2;
+}
+/*页面中存在其他颜色的线时调用*/
+
+
+
+
+
+
+
+
+
