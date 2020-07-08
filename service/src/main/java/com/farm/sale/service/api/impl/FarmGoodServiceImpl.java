@@ -3,6 +3,7 @@ package com.farm.sale.service.api.impl;
 import com.farm.sale.dao.api.FarmGoodDao;
 import com.farm.sale.model.FarmGood;
 import com.farm.sale.service.api.FarmGoodService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,13 +34,14 @@ public class FarmGoodServiceImpl implements FarmGoodService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param pageNum 查询起始位置
+     * @param pageSize 查询条数
      * @return 对象列表
      */
     @Override
-    public List<FarmGood> queryAllByLimit(int offset, int limit) {
-        return this.farmGoodDao.queryAllByLimit(offset, limit);
+    public List<FarmGood> queryAllByLimit(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return this.farmGoodDao.queryAllByLimit();
     }
 
     /**
