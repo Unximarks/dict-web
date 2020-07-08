@@ -1,4 +1,4 @@
-package com.farm.sale.model.api;
+package com.farm.sale.model;
 
 import lombok.Data;
 
