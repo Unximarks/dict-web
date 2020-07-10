@@ -275,11 +275,12 @@
         };
 
         $.ajax({
-            url: "/sendMessage",
+            url: "/sendMessage/post",
             data: param,
+            type:"POST",
             dataType:"json",
             success: function(){
-                $(this).addClass("done");
+                alert("ok")
             }});
     }
 
