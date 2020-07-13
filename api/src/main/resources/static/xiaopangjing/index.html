@@ -30,7 +30,7 @@
 <body>
 	<div class="main-bg" id="mian">
 		<!-- title -->
-		<h1>小胖晶后台管理系统</h1>
+		<h1>小胖晶博客管理系统</h1>
 		<!-- //title -->
 		<div class="sub-main-w3">
 			<div class="image-style">
@@ -46,11 +46,11 @@
 							<h3 class="legend">账号登录</h3>
 							<div class="input">
 								<span class="fa fa-envelope-o" aria-hidden="true"></span>
-								<input type="email" v-model="" placeholder="邮箱" name="email" required />
+								<input type="email" v-model="logindata.email" placeholder="邮箱" name="email" required />
 							</div>
 							<div class="input">
 								<span class="fa fa-key" aria-hidden="true"></span>
-								<input type="password" v-model="" placeholder="密码" name="password" required />
+								<input type="password" v-model="logindata.password" placeholder="密码" name="password" required />
 							</div>
 							<button type="submit" class="btn submit">登 录</button>
 							<a href="#" class="bottom-text-w3ls">忘记密码?</a>
@@ -102,7 +102,7 @@
 		<!-- copyright -->
 		<div class="copyright">
 			<h2>Copyright &copy;湘ICP备17023618号
-				<a href="www.beian.miit.gov.cn">小胖晶</a>
+				<a href="http://www.beian.miit.gov.cn">小胖晶</a>
 			</h2>
 		</div>
 		<!-- //copyright -->
@@ -118,16 +118,16 @@ new Vue({
     data: {
         nowYear:new Date().getFullYear(),
         logindata:{
-				email:"123@foxmail.com",
-				password:"admin123"
+				email:"",
+				password:""
 			},
 			registerdata:{
-				name:"123@foxmail.com",
-				password:"admin123",
-				confirmPassword:"admin123"
+				name:"",
+				password:"",
+				confirmPassword:""
 			},
 			forgetdata:{
-				email:"123@foxmail.com",
+				email:"",
 			}
     }
 });
