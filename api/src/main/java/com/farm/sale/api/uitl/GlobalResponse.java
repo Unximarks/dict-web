@@ -36,11 +36,11 @@ public class GlobalResponse<T> implements Serializable{
     /**
      * 错误码
      */
-    private String errorCode;
+    private Integer code =20000;
     /**
      * 错误描述，可选值有：普通字符串、带{0}类似的待格式化字符串
      */
-    private String errorMsg;
+    private String message;
     /**
      * 业务数据， 如没有该值，泛型请试用java.lang.Void
      */
@@ -58,13 +58,13 @@ public class GlobalResponse<T> implements Serializable{
      * @param formatArguments
      * @return
      */
-    public GlobalResponse<T> setError(String code, String msg, Object... formatArguments) {
+    public GlobalResponse<T> setError(Integer code, String msg, Object... formatArguments) {
         success = Boolean.FALSE;
-        errorCode = code;
+        code = code;
         if(formatArguments.length > 0) {
-            errorMsg = MessageFormat.format(msg, formatArguments);
+            message = MessageFormat.format(msg, formatArguments);
         } else {
-            errorMsg = msg;
+            message = msg;
         }
         return this;
     }
@@ -75,7 +75,7 @@ public class GlobalResponse<T> implements Serializable{
      * @param formatArguments
      * @return
      */
-    public GlobalResponse<T> setError(BaseConstant<String> responseCode, Object... formatArguments) {
+    public GlobalResponse<T> setError(BaseConstant<Integer> responseCode, Object... formatArguments) {
         setError(responseCode.getCode(), responseCode.getDesc(), formatArguments);
         return this;
     }
@@ -110,11 +110,11 @@ public class GlobalResponse<T> implements Serializable{
      */
 
     public static <T> GlobalResponse<T> success() {
-        return new GlobalResponse<T>(true, null, null, null);
+        return new GlobalResponse<T>(true, 20000, null, null);
     }
 
     public static <T> GlobalResponse<T> success(T data) {
-        return new GlobalResponse<T>(true, null, null, data);
+        return new GlobalResponse<T>(true, 20000, "错误", data);
     }
 
     /**
@@ -132,7 +132,7 @@ public class GlobalResponse<T> implements Serializable{
      * @param responseCode
      * @return
      */
-    public static <T> GlobalResponse<T> fail(BaseConstant<String> responseCode) {
+    public static <T> GlobalResponse<T> fail(BaseConstant<Integer> responseCode) {
         return new GlobalResponse<T>(false, responseCode.getCode(), responseCode.getDesc(), null);
     }
 
@@ -143,7 +143,7 @@ public class GlobalResponse<T> implements Serializable{
      * @param formatArguments
      * @return
      */
-    public static <T> GlobalResponse<T> fail(BaseConstant<String> responseCode, Object... formatArguments) {
+    public static <T> GlobalResponse<T> fail(BaseConstant<Integer> responseCode, Object... formatArguments) {
         return new GlobalResponse<T>().setError(responseCode, formatArguments);
     }
 
@@ -154,7 +154,7 @@ public class GlobalResponse<T> implements Serializable{
      * @param errorMsg
      * @return
      */
-    public static <T> GlobalResponse<T> fail(String errorCode, String errorMsg) {
+    public static <T> GlobalResponse<T> fail(Integer errorCode, String errorMsg) {
         return new GlobalResponse<T>(false, errorCode, errorMsg, null);
     }
 
@@ -166,7 +166,7 @@ public class GlobalResponse<T> implements Serializable{
      * @param formatArguments
      * @return
      */
-    public static <T> GlobalResponse<T> fail(String errorCode, String errorMsg, Object... formatArguments) {
+    public static <T> GlobalResponse<T> fail(Integer errorCode, String errorMsg, Object... formatArguments) {
         return new GlobalResponse<T>().setError(errorCode, errorMsg, formatArguments);
     }
 
@@ -177,7 +177,7 @@ public class GlobalResponse<T> implements Serializable{
      * @param data
      * @return
      */
-    public static <T> GlobalResponse<T> fail(BaseConstant<String> responseCode,T data) {
+    public static <T> GlobalResponse<T> fail(BaseConstant<Integer> responseCode,T data) {
         return new GlobalResponse<T>(false, responseCode.getCode(), responseCode.getDesc(), data);
     }
 
@@ -190,7 +190,7 @@ public class GlobalResponse<T> implements Serializable{
      * @param data
      * @return
      */
-    public static <T> GlobalResponse<T> build(Boolean success, String code, String message, T data) {
+    public static <T> GlobalResponse<T> build(Boolean success, Integer code, String message, T data) {
         return new GlobalResponse<T>(success, code, message, data);
     }
     /**
