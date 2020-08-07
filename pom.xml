@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.1.RELEASE</version>
+        <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.dict</groupId>
@@ -14,34 +15,67 @@
     <name>mark</name>
     <description>Demo project for Spring Boot</description>
 
+
+    <modules>
+        <module>model</module>
+        <module>dao</module>
+        <module>api</module>
+        <module>service</module>
+        <module>platform</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>api</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>service</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>model</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>dao</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dict</groupId>
+                <artifactId>platform</artifactId>
+                <version>${mark.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
+                </configuration>
             </plugin>
         </plugins>
     </build>
