@@ -24,7 +24,7 @@
         select
           id, name, phone, email, message, create_time
         from farm.t_farm_message
-        limit #{offset}, #{limit}
+
     </select>
 
     <!--通过实体作为筛选条件查询-->
