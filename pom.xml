@@ -21,7 +21,6 @@
         <module>dao</module>
         <module>api</module>
         <module>service</module>
-        <module>platform</module>
     </modules>
 
     <dependencyManagement>
@@ -46,11 +45,11 @@
                 <artifactId>dao</artifactId>
                 <version>${mark.version}</version>
             </dependency>
-            <dependency>
+         <!--   <dependency>
                 <groupId>com.dict</groupId>
                 <artifactId>platform</artifactId>
                 <version>${mark.version}</version>
-            </dependency>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
